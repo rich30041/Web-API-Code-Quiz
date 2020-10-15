@@ -19,7 +19,7 @@ var submitScoreBtn = document.getElementById("submit");
 
 /**set score and timer*/
 var score = 0;
-var timer = 30;
+var timer = 60;
 var timeCount;
 finishDiv.style.display="none";
 /**this is the timer funtion which will start counting as soon as the quiz starts*/
@@ -154,6 +154,7 @@ function showHighscore(){
 }
 //** This event listner submit the initial and final score to the local storage */
 document.addEventListener("submit", function (event) {
+    console.log("HERE")
     event.preventDefault();
     var initialInput = document.querySelector("#inputInitial").value;
     if (initialInput === "") {
