@@ -6,9 +6,10 @@ var questions = [
 		answer: "No expiration time",
 	},
 	{
-		title: "What would be the output of <script type=\"text/javascript\"> x=4+\"4\"; document.write(x); </script>",
-		choices: ["44", "8", "4", "Error output"],
-		answer: "44",
+		title: "JavaScript is interpreted by?",
+
+        choices: ["Server", "Client", "Object", "None of the above"],
+		answer: "Client",
 	},
 	{
 		title: "What does DOM stand for?",

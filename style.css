@@ -2,88 +2,79 @@ body{
     margin: 20px!important;
  }
  .wrapper{
-     margin: 0 auto; 
-     width: 700px; 
-     text-align: center; 
      display: flex;
      flex-direction: column;
      align-items: center;
-      
  }
  
+ .divContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
  .container {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 80rem;
+    max-width: 1280px;
     margin: 0 auto;
   }
 
-  #first-page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h2{
+    font-family: sans-serif;
+    margin-top: -8px;
 }
 
-  #gameover {
+li{
+    padding-bottom: 3px;
+    color: white;
+    text-shadow: 1.5px 1px 3px black;
+    list-style-type: none;
+}
+
+
+ 
+#timer{
+    font-family: sans-serif;
+    background-color: #5a69f0;
+    color: #eeeeee;
+    font-size: x-large;
+    text-shadow: .5px .5px black;
     text-align: center;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
- 
-.gameover{
-    margin: 0 auto; 
-    width: 900px; 
-    visibility: hidden;
 }
 
- .final-page{
- 
-     margin: 0 auto; 
-     width: 900px; 
-     visibility: hidden;
+button {
+    display: inline-block;
+    font-family: sans-serif;
+    background-color: #5e6df1;
+    border-radius: 10px;
+    border: 3px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+    width: 200px;
+    margin-top: 3px;
   }
- 
- .all_btn{
-     background: darkmagenta; 
-     padding: 10px;
-     margin: 10px;
-     width: 30%; 
-     border: 1px solid cornsilk;
-     border-radius: 5px;
-     color: white;   
-     font-size: 1.em;
-     text-align: center;
-     /* cursor: pointer;  */
-     
-     
- }
- .myBtn{
-     background: darkmagenta; 
-     padding: 10px;
-     margin: 10px; 
-     border: 1px solid cornsilk;
-     border-radius: 5px;
-     color: white;   
-     font-size: 1.em;
-     
- 
- }
- 
- button{
-     background: darkmagenta!important; 
-      
- }
 
- #highScore{
-    height: 1.5rem;
+button:hover{
+    box-shadow: 4px 3px 6px #4450bd;
+}
+
+#inputInitial {
+        height:40px;
+        font-size:14pt;
+}
+
+#highScore {
+    height: 24px;
     border: groove 2px;
 }
 
-#high-scorePage{
+#high-scorePage {
     display: none;
     width: 50%;
     border: solid;
@@ -93,16 +84,17 @@ body{
     background: lightsteelblue;
 }
 
-#highscore-header{
+#highscore-header {
     display:flex;
     justify-content: space-around;
     border-bottom-style: outset;
-    margin-bottom: .5rem;
+    margin-bottom: 10px;
     background-color: #5e6df1;
     color: #eeeeee;
     font-family: sans-serif;
 }
-#highscoreContainer{
+
+#highscoreContainer {
     height: 100%;
     width: 100%;
     display: none;
@@ -111,76 +103,41 @@ body{
     justify-content: center;
 }
 
-#initials{
-    margin: .5rem;
-    height: 1.75rem;
+#initials {
+    margin: 10px;
+    height: 28px;
 }
 
-#highscore-initials{
+#highscore-initials {
     display: inline-block;
-    padding-left: 9.5rem;
+    padding-left: 150px;
     font-family: sans-serif;
     font-weight: bold;
 }
 
-#highscore-score{
+#highscore-score {
     float: right;
-    padding-right: 8.75rem;
+    padding-right: 140px;
     font-family: sans-serif;
     font-weight: bold;
 }
 
- #finalScore{
-    padding-bottom: 0.5rem;
+#gameover {
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#finalScore {
+    padding-bottom: 10px;
     font-size: x-large;
     font-family: sans-serif;
     font-weight: bold;
 }
 
-#endGameBtns{
+#endGameBtns {
     display: none;
 }
  
- @media only screen 
- and (min-width:320px) 
- and (max-width:540px) {
  
-     .all_btn{
-         background: darkmagenta; 
-         padding: 10px;
-         margin: 20px;
-         width: 100%; 
-         border: 1px solid cornsilk;
-         border-radius: 5px;
-         color: white;   
-         font-size: 1.em;
-         text-align: center;
-         /* cursor: pointer;  */
-         
-         
-     }
-     .wrapper{
-         margin: 0px;
-         text-align: justify;
-         word-wrap: break-word;
-         width: 100%;
-     }
- 
-         
-     h2{
-         text-align: left;
-     }
-     
-     .gameover{
-        margin: 0px; 
-        width: 100%; 
-        visibility: hidden;
-    }
-
-     .final-page{
- 
-         margin: 0px; 
-         width: 100%; 
-         visibility: hidden;
-      }
- }

@@ -1,82 +1,51 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
-    <div class="container">
-    <div class="first-page">
-        <!---div that will contain the form of questionnaire page-->
-        <div class="row header">
-      <!--      <div class="col-md-10 col-sm-6">
-                <h5 id="h-score">View HighScore</h5>
-            </div>
-        -->   
-            <div class="col-md-2 col-sm-6">
-                <h5 id="time">Time: 0 </h5>
-            </div>
-        
+        <!---nav that contains the timer-->
+    <nav class="row header">
+        <div class="col-md-10 col-sm-6">
+            <h2 id="time">Time: 0 </h2>
         </div>
-
-        <br>
-    
+    </nav>
+ 
+    <div class="container">  
+        <!--The wrapper sections shows the first page of the quiz to either start game or show high scores-->
         <div class="wrapper">
-            <div class=" row ">
-                <div class="col-md-10 col-sm-6">
-                    <h2>Coding Quiz Challenge</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-sm-6">
-                    <p>Try to answer the following code-related questions within the limit.
-                        Keep in mind that incorrect answers will penalize your score
-                        time by 15 seconds</p>
-
-                    <button id="start" class="btn btn-primary btn-lg">Start Quiz</button>
-                    <button id="startPageHighscore" class="btn btn-primary btn-lg" onclick="showHighscore()">High Scores</button>
-                </div>
-            </div>
+          <h2>Coding Quiz Challenge</h2>
+          <h2>Attempt to answer code related questions, within 60 seconds.</h2>
+          <h2>You will be penalized 10 seconds for each incorrect answer.</h2>
+          <button id="start" class="btn btn-primary btn-lg">Start Quiz</button>
+          <button id="startPageHighscore" class="btn btn-primary btn-lg" onclick="showHighscore()">High Scores</button>
         </div>
 
-
-        <!---This is begining of the  div that will contain all the questions  -->
+        <!---This is the section to display all questions and answers  -->
         <div class="divContainer">
-
-            <!---This is begining of the first div that will display the question -->
-
             <h3 id="title">
-
             </h3>
             <ol id="q-list">
-
-
             </ol>
-
+            <div id="response"> </div>
         </div>
-        <br>
-        <div id="response"> </div>
 
         <!-- Section to display complete enter initials call high score list or-->
         <div class="gameover">
-            <div id="finalScore"></div> 
-            <h2>Game Over!</h2>
-           <h3 id="result"> </h3>  
-           <p id="errorSmg"></p>
-           <form class="form-horizontal">
-            <div class="form-group mx-sm-3 mb-2"> 
-                <input type="text" size = "40" class="form-control" id="inputInitial" placeholder="Enter your initials for high score"> </div>
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            </form>
+            <div id="finalScore">  
+              <!-- <h2>Game Over!</h2> -->
+              <h3 id="result"> </h3>  
+              <p id="errorSmg"></p> 
+              <!-- <form class="form-horizontal">  -->
+                 <input type="text" size = "35" placeholder="Enter you initials for high score" name="intials" id="inputInitial"/><br>
+                
+                 <button id="submitScore">Submit Score</button>
+              <!-- </form>  -->
+            </div>
         </div>
 
         <div id=highscoreContainer>
@@ -89,14 +58,11 @@
                 <div id = "highscore-score"></div>
             </div>
             <div id="endGameBtns">
-                <button id="Try again?" class="btn btn-primary btn-lg"  onclick="init()">Play Again</button>
+                <button id="playagain" class="btn btn-primary btn-lg"  onclick="init()">Play Again?</button>
                 <button id="clearHighscore" class="btn btn-primary btn-lg" onclick="clearScore()">Clear Highscores</button>
             </div>
         </div>
-        <!-- Display high score list with button to start over and clear scores-->
-
-
-    </div>
+    </div> 
         <script src="script.js"></script>
         <script src="questions.js"></script>
 </body>

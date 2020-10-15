@@ -10,20 +10,18 @@ var errMsg = document.querySelector("#errorSmg");
 var initialInput = document.querySelector("#inputInitial").value;
 var submitEl = document.querySelector(".btn btn-primary mb-2");
 var responsDiv = document.querySelector("#response");
-var finaPageEl = document.querySelector(".final-page");
-var initialAndScore = document.querySelector("#staticEmail");
-var firstPageEl = document.querySelector(".first-page");
 var highscoreDiv = document.getElementById("high-scorePage");
 var highscoreDisplayName = document.getElementById("highscore-initials");
 var highscoreDisplayScore = document.getElementById("highscore-score");
 var endGameBtns = document.getElementById("endGameBtns");
-var submitScoreBtn = document.getElementById("submitScore");
+var submitScoreBtn = document.getElementById("submit");
 
 
 /**set score and timer*/
 var score = 0;
 var timer = 30;
 var timeCount;
+finishDiv.style.display="none";
 /**this is the timer funtion which will start counting as soon as the quiz starts*/
 function setupTimer() {
     timeCount = setInterval(function () {
@@ -43,6 +41,7 @@ function setupTimer() {
 document.addEventListener("click", function (event) {
     if (event.target === btnElement) {
         wrapperElement.style.display = "none";
+        finishDiv.style.display="none";
         setupTimer()
         displayQuestions();
     }
@@ -53,33 +52,27 @@ document.addEventListener("click", function (event) {
 /**declare the index variable for the onclickHandler function**/
 var i = 0;
 
-/**Add a function to compare the answers and 
- * display each questions as the buttons are clicked.*/
+/* Displays the questions, verifies timer not expired, and verifies user choose the correct answer*/
 function onclickHandler(event) {
     if(timer<=0){
         clearInterval(timeCount);
-        divContEL.style.display="none";
+        finishDiv.style.display="none";
         displayResult();
     }
     var answerText = event.target.textContent 
     if (answerText === questions[i].answer) {
         timer = timer;
         score++;
-        responsDiv.setAttribute("style", "font-size: 32px; color: green")
+        responsDiv.setAttribute("style", "font-size: 28px; color: green")
         responsDiv.textContent = "Correct";
     } else {
-
-        responsDiv.setAttribute("style", "font-size: 32px; color: red")
+        responsDiv.setAttribute("style", "font-size: 28px; color: red")
         responsDiv.textContent = "Wrong";
-        timer = timer - 15;
+        timer = timer - 10;
      }
     
-      
-     
     if (i < questions.length-1 && timer>0 ) {
-
       i++;
-
       setTimeout(function () {
       displayQuestions();
       responsDiv.textContent = "";
@@ -89,46 +82,27 @@ function onclickHandler(event) {
             responsDiv.textContent = "";
             displayResult();
             clearInterval(timeCount);
-          
-        }, 500)
-    
 
+        }, 500)
         divContEL.innerHTML = '';
      }
      
     /**Function to display users final score */
     function displayResult() {
-        finishDiv.style.visibility = "visible";
-
+        finishDiv.style.display = "flex";
         timer = 0;
         timeElement.textContent = "Time:" + " " + timer;
         var HighScores = score;
         localStorage.getItem(HighScores)
         finalScore.textContent = "You got " + HighScores +" out of " + questions.length + " correct!";
         localStorage.setItem("HighScores", HighScores)
- 
+
     }
 }
-/**function to show the last page  */
-function renderLastItem() {
-    var yourScore = localStorage.getItem("HighScores");
-     var yourInitial = localStorage.getItem("Initial");
-     if (yourScore && yourInitial === "") {
-        return
-    }
-    finishDiv.textContent = "";
-    var finaPageEl = document.querySelector(".final-page");
-    finaPageEl.style.visibility = "visible";
-    var initialAndScore = document.querySelector("#staticEmail");
-    initialAndScore.value = yourInitial + ":" + " " + yourScore;
-
-}
  
-// On click of the submit button, we run the function highscore that saves and stringifies the array of high scores already saved in local stoage
-// as well as pushing the new user name and score into the array we are saving in local storage. Then it runs the function to show high scores.
-//submitScoreBtn.addEventListener("click", function highscore(){
-
+// On click of the submitScore button, we run the function highscore that saves the score and initials of the user
 function highscore(){
+ 
     if(initialInput.value === "") {
         alert("Initials cannot be blank");
         return false;
@@ -142,19 +116,17 @@ function highscore(){
             name : currentUser,
             score : score
         };
-    
-     //   gameoverDiv.style.display = "none";
+        wrapperElement.style.display = "none";
+        finishDiv.style.display="none"
         highscoreContainer.style.display = "flex";
         highscoreDiv.style.display = "block";
         endGameBtns.style.display = "flex";
-        
         savedHighscores.push(currentHighscore);
         localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
         generateHighscores();
 
     }
 }    
-//});
 
 function generateHighscores(){
     finishDiv.textContent = "";
@@ -173,8 +145,7 @@ function generateHighscores(){
 
 // This function displays the high scores page while hiding all of the other pages from 
 function showHighscore(){
- //   startQuizDiv.style.display = "none"
- //   gameoverDiv.style.display = "none";
+    wrapperElement.style.display = "none";
     highscoreContainer.style.display = "flex";
     highscoreDiv.style.display = "block";
     endGameBtns.style.display = "flex";
@@ -189,10 +160,10 @@ document.addEventListener("submit", function (event) {
         errMsg.setAttribute("style", "color: red")
         errMsg.textContent = "Initial input field cannot be empty"
     } else {
+        finishDiv.style.display="none";
         errMsg.textContent = "";
         localStorage.getItem(initialInput)
         localStorage.setItem("Initial", initialInput)
-//         renderLastItem()
         highscore()
 }
 
