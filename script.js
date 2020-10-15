@@ -63,6 +63,7 @@ function onclickHandler(event) {
     if (answerText === questions[i].answer) {
         timer = timer;
         score++;
+        console.log(score)
         responsDiv.setAttribute("style", "font-size: 28px; color: green")
         responsDiv.textContent = "Correct";
     } else {
